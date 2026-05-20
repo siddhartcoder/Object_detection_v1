@@ -1,0 +1,53 @@
+version: "3.3"
+
+services:
+
+  # ── Task 1: Data Analysis ────────────────────────────────
+  bdd-analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bdd-analysis:latest
+    container_name: bdd_analysis
+
+    volumes:
+      - "/home/jayanth.r/practice/Sid_Work/Data/labels:/app/data/labels:ro"
+      - "/home/jayanth.r/practice/Sid_Work/Data/images:/app/data/images:ro"
+      - "./results:/app/results"
+
+    command: >
+      python main.py --task analysis
+      --train_json /app/data/labels/bdd100k_labels_images_train.json
+      --val_json /app/data/labels/bdd100k_labels_images_val.json
+      --image_dir /app/data/images
+      --output_dir /app/results/analysis
+
+    environment:
+      - PYTHONPATH=/app
+
+    restart: unless-stopped
+
+  # ── Dashboard Service ────────────────────────────────────
+  bdd-dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bdd-analysis:latest
+    container_name: bdd_dashboard
+
+    volumes:
+      - "/home/jayanth.r/practice/Sid_Work/Data/labels:/app/data/labels:ro"
+
+    ports:
+      - "8050:8050"
+
+    command: >
+      python main.py --task dashboard
+      --train_json /app/data/labels/bdd100k_labels_images_train.json
+      --val_json /app/data/labels/bdd100k_labels_images_val.json
+      --port 8080
+
+    environment:
+      - PYTHONPATH=/app
+
+    restart: unless-stopped

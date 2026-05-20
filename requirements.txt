@@ -1,0 +1,30 @@
+# Core
+numpy>=1.24.0
+pandas>=2.0.0
+opencv-python>=4.8.0
+Pillow>=10.0.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Deep Learning & Object Detection
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0       # YOLOv8
+
+# Data Analysis & Dashboard
+plotly>=5.15.0
+dash>=2.11.0
+dash-bootstrap-components>=1.4.0
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# Evaluation
+pycocotools>=2.0.6        # COCO-style mAP evaluation
+
+# Code Quality
+black>=23.0.0
+pylint>=2.17.0
+
+# Utilities
+tqdm>=4.65.0
+pyyaml>=6.0.0
