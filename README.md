@@ -305,7 +305,7 @@ python main.py --task dashboard \
   --val_json data/labels/det_20/det_val.json
 ```
 
-**Key Observations (to be filled after running):**
+**Key Observations :
 - Class imbalance: `car` dominates; `train` is very rare
 - Model strength: Large objects (car, truck, bus) detected reliably
 - Model weakness: Small objects (rider, bicycle) at distance; night-time scenes
